@@ -1,5 +1,6 @@
-
-
+###
+# @author mengqi
+#
 
 image-name=zongmengqi/node-web-app
 
@@ -10,4 +11,7 @@ run:
 stop:
 	docker stop $$(docker ps -a -q --filter ancestor=${image-name} --format="{{.ID}}")
 test:
-	curl http://localhost:49160
+        curl localhost:49160
+logs:
+	docker logs $$(docker ps -a -q --filter ancestor=${image-name} --format="{{.ID}}")
+
