@@ -1,5 +1,6 @@
 'use strict';
 
+const os = require('os');
 const express = require('express');
 
 // Constants
@@ -8,9 +9,12 @@ const HOST = '0.0.0.0';
 
 // App
 const app = express();
-app.get('/', (req, res) => {
-                res.send('Howdy partner!\n');
-        });
+
+app.use(express.static('public'));
+
+app.get('/blog', function(req, res) {
+  res.redirect('http://localhost:8000');
+});
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
